@@ -1,0 +1,6 @@
+*.pdf
+data
+gitea/*
+
+# exception to the rule
+!gitea/.gitkeep 
