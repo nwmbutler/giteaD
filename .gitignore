@@ -1,6 +1,8 @@
 *.pdf
-data
+data/*
 gitea/*
-
+postgres/*
 # exception to the rule
-!gitea/.gitkeep 
+!data/.gitkeep
+!gitea/.gitkeep
+!postgres/.gitkeep
