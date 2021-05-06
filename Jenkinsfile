@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo docker compose create'
+                sh 'docker compose create'
             }
         }
  
