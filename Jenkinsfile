@@ -11,7 +11,7 @@ pipeline {
         stage('Image push to ECR') {
             steps {
                 script {
-                    docker.withRegistry('537920445401.dkr.ecr.eu-west-2.amazonaws.com', 'ecr:ecs-access') {
+                    docker.withRegistry('537920445401.dkr.ecr.eu-west-2.amazonaws.com', 'ecr:eu-west-2:ecs-access') {
                     docker.image('ecsgitea').push('latest')
                     }
                 }
