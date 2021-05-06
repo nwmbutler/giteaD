@@ -9,10 +9,8 @@ pipeline {
         }
  
         stage('Image push to ECR') {
-            steps {
-                docker.withRegistry('https://1234567890.dkr.ecr.us-east-1.amazonaws.com', 'ecr:eu-west-2:ecs-access') {
-                docker.image('gitea/gitea').push('latest')
-                }
+            docker.withRegistry('https://1234567890.dkr.ecr.us-east-1.amazonaws.com', 'ecr:eu-west-2:ecs-access') {
+            docker.image('gitea/gitea').push('latest')
             }
         }
     }
