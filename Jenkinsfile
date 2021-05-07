@@ -15,6 +15,13 @@ pipeline {
             }
         }
 
+        stage('push images to ecr') {
+            steps {
+                sh 'docker push 537920445401.dkr.ecr.eu-west-2.amazonaws.com/gitea/gitea:latest'
+                sh 'docker push 537920445401.dkr.ecr.eu-west-2.amazonaws.com/postgres:latest'
+            }
+        }
+
         stage('Docker cleanup') {
             steps {
                 sh 'docker stop $(docker ps -aq)'
