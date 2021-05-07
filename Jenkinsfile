@@ -15,6 +15,12 @@ pipeline {
             }
         }
 
+        stage('login to ECR') {
+            steps {
+                sh 'aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 537920445401.dkr.ecr.eu-west-2.amazonaws.com'
+            }
+        }
+
         stage('push images to ecr') {
             steps {
                 sh 'docker push 537920445401.dkr.ecr.eu-west-2.amazonaws.com/gitea/gitea:latest'
