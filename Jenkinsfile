@@ -3,8 +3,10 @@ pipeline {
     
     stages {
         stage('Docker cleanup') {
-            sh 'docker stop $(docker ps -aq)'
-            sh 'docker rmi $(docker images -q) --force'
+            steps {
+                sh 'docker stop $(docker ps -aq)'
+                sh 'docker rmi $(docker images -q) --force'
+            }
         }
 
         stage('Build') {
