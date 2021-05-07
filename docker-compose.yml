@@ -7,7 +7,6 @@ networks:
 services:
   server:
     image: gitea/gitea:latest
-    container_name: ecsgitea
     environment:
       - USER_UID=1000
       - USER_GID=1000
