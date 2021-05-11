@@ -29,7 +29,6 @@ services:
     ports:
       - "3000:3000"
       - "2222:22"
-    command: gitea user create --username value giteaNB --password value 1Gitea! --email value nwmbutler@gmail.com --admin
     depends_on:
       - gitea-db
 
