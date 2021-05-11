@@ -12,15 +12,9 @@ services:
       - APP_NAME=Gitea
       - USER_UID=1000
       - USER_GID=1000
-      - ROOT_URL=http://gitea:3000
       - SSH_DOMAIN=gitea
       - SSH_PORT=2222
       - HTTP_PORT=3000
-      - DB_TYPE=postgres
-      - DB_HOST=gitea-db:5432
-      - DB_NAME=gitea
-      - DB_USER=postgres
-      - DB_PASSWD=postgres
     restart: always
     networks:
       - gitea
@@ -29,19 +23,3 @@ services:
     ports:
       - "3000:3000"
       - "2222:22"
-    depends_on:
-      - gitea-db
-
-  gitea-db:
-    image: postgres:latest
-    container_name: gitea_db
-    restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=gitea
-      - SCHEMA=public
-    networks:
-      - gitea
-    volumes:
-      - ./postgres:/var/lib/postgresql/data
