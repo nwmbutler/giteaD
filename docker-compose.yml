@@ -6,7 +6,7 @@ networks:
 
 services:
   server:
-    image: gitea/gitea:1.11.3
+    image: gitea/gitea:latest
     container_name: gitea
     environment:
       - APP_NAME=Gitea
