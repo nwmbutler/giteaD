@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'docker-compose -f docker-compose.yml down'
-                sh 'docker-compose create'
+                sh 'docker-compose up --no-start'
             }
         }
 
