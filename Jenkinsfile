@@ -33,7 +33,7 @@ pipeline {
             steps {
                 sh 'docker stop $(docker ps -aq)'
                 sh 'docker rmi $(docker images -q) --force'
-                sh 'docker system prune'
+                sh 'docker system prune -f'
             }
         }
     }
