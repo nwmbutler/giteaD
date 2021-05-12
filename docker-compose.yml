@@ -7,14 +7,16 @@ networks:
 services:
   server:
     image: gitea/gitea:latest
+    # command: sh -c "gitea user create --username value giteaNB --password value 1Gitea! --email value nwmbutler@gmail.com --admin"
     container_name: gitea
     environment:
-      - APP_NAME=Gitea
       - USER_UID=1000
       - USER_GID=1000
-      - SSH_DOMAIN=gitea
-      - SSH_PORT=2222
-      - HTTP_PORT=3000
+      - GITEA__database__DB_TYPE=postgres
+      - GITEA__database__HOST=db:5432
+      - GITEA__database__NAME=gitea
+      - GITEA__database__USER=gitea
+      - GITEA__database__PASSWD=gitea
     restart: always
     networks:
       - gitea
@@ -22,4 +24,18 @@ services:
       - ./gitea:/data
     ports:
       - "3000:3000"
-      - "2222:22"
+      - "222:22"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_DB=gitea
+    networks:
+      - gitea
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
