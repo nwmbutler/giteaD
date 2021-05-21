@@ -12,10 +12,6 @@ services:
       - USER_UID=1000
       - USER_GID=1000
       - DB_TYPE=postgres
-      - GITEA__database__HOST=giteadb.cmtmo23adjtj.eu-west-2.rds.amazonaws.com:5432
-      - GITEA__database__NAME=postgres
-      - GITEA__database__USER=postgres
-      - GITEA__database__PASSWD=postgres
     restart: always
     networks:
       - gitea

@@ -12,7 +12,6 @@ pipeline {
         stage('tag images pre push') {
             steps {
                 sh 'docker tag gitea/gitea:latest 537920445401.dkr.ecr.eu-west-2.amazonaws.com/gitea:latest'
-                // sh 'docker tag postgres:latest 537920445401.dkr.ecr.eu-west-2.amazonaws.com/postgres:latest'
             }
         }
 
@@ -25,7 +24,6 @@ pipeline {
         stage('push images to ecr') {
             steps {
                 sh 'docker push 537920445401.dkr.ecr.eu-west-2.amazonaws.com/gitea:latest'
-                // sh 'docker push 537920445401.dkr.ecr.eu-west-2.amazonaws.com/postgres:latest'
             }
         }
 
