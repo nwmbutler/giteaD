@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                dir('gitea') {
+                dir('gitea2') {
                     sh 'docker-compose -f docker-compose.yml down'
                     sh 'docker-compose up --no-start'
                 }
@@ -19,7 +19,7 @@ pipeline {
 
         stage('tag images pre push') {
             steps {
-                dir('gitea') {
+                dir('gitea2') {
                     sh 'docker tag gitea/gitea:latest 220087298643.dkr.ecr.eu-west-2.amazonaws.com/gitea:latest'
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
 
         stage('push images to ecr') {
             steps {
-                dir('gitea') {
+                dir('gitea2') {
                     sh 'docker push 220087298643.dkr.ecr.eu-west-2.amazonaws.com/gitea:latest'
                 }
             }
@@ -43,7 +43,7 @@ pipeline {
 
         stage('Docker cleanup') {
             steps {
-                dir('gitea') {
+                dir('gitea2') {
                     sh 'docker stop $(docker ps -aq)'
                     sh 'docker rmi $(docker images -q) --force'
                     sh 'docker system prune -f'
