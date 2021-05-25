@@ -11,19 +11,19 @@ pipeline {
 
         stage('tag images pre push') {
             steps {
-                sh 'docker tag gitea/gitea:latest 537920445401.dkr.ecr.eu-west-2.amazonaws.com/gitea:latest'
+                sh 'docker tag gitea/gitea:latest 220087298643.dkr.ecr.eu-west-2.amazonaws.com/gitea:latest'
             }
         }
 
         stage('login to ECR') {
             steps {
-                sh 'aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 537920445401.dkr.ecr.eu-west-2.amazonaws.com'
+                sh 'aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 220087298643.dkr.ecr.eu-west-2.amazonaws.com'
             }
         }
 
         stage('push images to ecr') {
             steps {
-                sh 'docker push 537920445401.dkr.ecr.eu-west-2.amazonaws.com/gitea:latest'
+                sh 'docker push 220087298643.dkr.ecr.eu-west-2.amazonaws.com/gitea:latest'
             }
         }
 
