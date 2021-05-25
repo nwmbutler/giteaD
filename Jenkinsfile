@@ -2,6 +2,12 @@ pipeline {
     agent any
     
     stages {
+        stage('Pull TF code') {
+            steps {
+                git url: 'https://github.com/nwmbutler/giteaTF'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'docker-compose -f docker-compose.yml down'
